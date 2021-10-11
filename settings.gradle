@@ -1,0 +1,3 @@
+rootProject.name = 'webflux-reactive-crud'
+
+include 'service'

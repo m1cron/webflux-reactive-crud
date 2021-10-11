@@ -1,0 +1,19 @@
+spring:
+  main:
+    banner-mode: off
+    allow-bean-definition-overriding: true
+  mandatory-file-encoding: utf-8
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/webflux_demo
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      force-response: true
+      charset: UTF-8
+
+management:
+  server:
+    port: 8090

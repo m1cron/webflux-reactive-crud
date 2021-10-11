@@ -1,0 +1,43 @@
+group = 'ru.micron'
+version = '1.0'
+rootProject.wrapper.gradleVersion = '7.2'
+
+buildscript {
+    ext {
+        ver = [
+                springBoot              : '2.3.3.RELEASE',
+                dependencyManagement    : '1.0.11.RELEASE',
+                lombok                  : '1.18.20',
+                swagger2                : '3.0.0',
+                webfluxUI               : '1.5.11',
+
+        ]
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:$ver.dependencyManagement",
+                "org.springframework.boot:spring-boot-gradle-plugin:$ver.springBoot"
+    }
+}
+
+defaultTasks 'clean', 'build'
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    targetCompatibility = sourceCompatibility = JavaVersion.VERSION_11
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+allprojects {
+    repositories.addAll(rootProject.buildscript.repositories)
+}
